@@ -91,10 +91,10 @@
   }
 
   #quad-page > input {
-    width: 5%;
-    height: 10%;
-    border-top: 10px solid grey;
-    border-right: 10px solid  grey;
+    width: 10%;
+    height: 20%;
+    border-top: 30px solid grey;
+    border-right: 30px solid  grey;
     border-left: solid #eee;
     border-bottom: solid #eee;
     transform: rotate(45deg);
@@ -139,7 +139,7 @@
     <img id="bottomleft-img" class="bottomleft-img" />
     <img id="bottomright-img" class="bottomright-img" />
   </div>
-    <!-- <input class="exit" type="button" ></input> -->
+  <!-- <input class="exit" type="button" ></input>  -->
 </div>
 
 
@@ -186,7 +186,7 @@
     <input class="exit start" type="button" value="Next"></input>
   </div>
 
-  <input type="button"  id = "skip" value="Skip to end"></input>
+  <!-- <input type="button"  id = "skip" value="Skip to end"></input> -->
 
   
 
@@ -464,56 +464,98 @@
   </video>
 </div>
 
-<style>
 
-    #end-page > * {
-      position: relative;
-    }
-    
-    
-    #end-page > .turtles {
-      margin: auto;
-      height: 60%;
-      width: 50%;
+
+    <style>
+
+      #end-page > * {
+        position: relative;
+        text-align: center;
+        
+      }
       
-    }
-    
-    #end-page > .turtles > img {
-      position:relative;
-      display:block;
-      width: 150px;
-    }
+     
+      #end-page > #turtles {
+        margin: auto;
+        /* height: 10%;
+        width: 20%; */
+        
+      } 
+      
+       #end-page > #turtles > img {
+        /* position:relative; */
+        display:inline; 
+        width: 150px;
+      } 
+  
+      #end-page > #adult > #continue {
+        
+        color: white;
+        font-size: 20px;
+        
+        text-align: center;
+        background-color:rgb(158,206,203);
+        display: block;
+        margin: 0 auto;
+  
+       
+        height: 100px;
+        width: 300px;
+        border-radius: 50%;
+      }
+  
+      
+      #end-page > #adult{
+          display: table;
+          margin: 0 auto;
+      }
+  
+      #end-page > #child{
+          display: table;
+          margin: 0 auto;
+      }
+  
+  
+      #exit {
+        background-color: red;
+        height: 100px;
+        width: 300px;
+        border-radius: 50%; 
+        display: block;
+        margin: 0 auto;
+        color: white;
+        font-size: 20px; 
+      }
+  
+      #end-page > #over {
+        font-size: 400%;
+      }
 
-    #end-page > input {
-      border-radius:10px;
-      color: white;
-      font-size: 20px;
-      width: 10%;
-      background-color:rgb(158,206,203);
-      position: absolute;
-      bottom: 30;
-      right: 30;
-    }
-    
-    #over {
-      text-align: center;
-      font-size: 400%;
-    }
-    </style>
-    
-    <div id="end-page" class="page">
-      <h1 id = "over">Game Over!</h1>
-      <div class="turtles">
-        <img style="left:25%; top:0;" src="FinalImagesALL/ImgaesforExamples/TurtleTransparent.png" />
-        <img style="left:75%; top:-33%;" src="FinalImagesALL/ImgaesforExamples/TurtleTransparent.png" />
-        <img style="left:0%; top:-33%;" src="FinalImagesALL/ImgaesforExamples/TurtleTransparent.png" />
-        <img style="left:50%; top:-66%;" src="FinalImagesALL/ImgaesforExamples/TurtleTransparent.png" />
-        <img style="left:75%; top:-100%;" src="FinalImagesALL/ImgaesforExamples/TurtleTransparent.png" />
-        <img style="left:25%; top:-100%;" src="FinalImagesALL/ImgaesforExamples/TurtleTransparent.png" />
-        <img style="left:50%; top:-133%;" src="FinalImagesALL/ImgaesforExamples/TurtleTransparent.png" />
+      #participant {
+        color: red;
+      }
+  
+      </style>
+      
+      <div id="end-page" class="page">
+        <div id = turtles>
+          <img style=" left:75%;" src="FinalImagesALL/ImgaesforExamples/TurtleTransparent.png" />
+          <img style="left:15%;" src="FinalImagesALL/ImgaesforExamples/TurtleTransparent.png" /> 
+        </div>
+        <h1 id = "over">Game Over!</h1>
+        <h2 id = "participant"></h2>
+        <div id = "adult">
+            <h1>If you are an <mark>adult participant, write down your ID</mark> and click the button below to proceed to the survery.</h1>
+            <input id = "continue" class="endpg" type="button" value = "Proceed to Survey" ></input>
+       </div>
+        
+        <div id = "child">
+          <h1>If you are a <mark>child participant,</mark> please click here to exit the game.</h1> 
+          <input id = "exit"  type="button"value = "Exit Game" ></input>
+        </div>
+        
       </div>
-      <input class="endpg" type="button"value = "Exit Game" ></input>
-    </div>
+  
 
 <style>
 
@@ -646,15 +688,682 @@
     <p id = "audio_loading"></p>
     <input type="button" id = "done" value="Continue" /> 
 </div>
+<style>
+#audiobody {
+  background-color: white;
+  border-radius:5px;
+  padding:10px;
+  margin:10px;
+}
 
+#audiobutton {
+  border-radius: 4px;
+  background-color: #6caba7;
+  padding:10px;
+  margin:40px;
+}
+
+.likert > li {
+  display:inline-block;
+  text-align:center;
+  padding: 10px;
+}
+
+#audiocontinue {
+  border-radius: 4px;
+  background-color: #6caba7;
+  text-align: center;
+}
+
+#audioquestion {
+  text-align:center;
+}
+
+#audiomain {
+  text-align:left;
+  width:60%;
+  left:20%;
+  position:absolute;
+}
+
+.likert {
+  text-align:center;
+}
+
+#audiolikertnext {
+  text-align:right;
+}
+
+.likert > li {
+  border-radius:4px;
+  padding:5px;
+  margin-top:5px;
+  border:1px solid gray;
+}
+
+</style>
+
+<div id="audioquestion" class="page">
+  <div id="audiomain">
+    <div id="audiobody" style="text-align:center"><h3>Please play the audio clip and answer the follow questions</h3></div>
+    <div style="text-align:center; width:100%;">
+      <input type="button" id="audiobutton" bgcolor="white" value="Play Audio"></input>
+    </div>
+
+    <div id="audiolikertQ1">
+      <div id="audiobody">How often do you hear family or friends speak in a similar way?</div>
+      <ul id="audiolikert1" class="likert">
+        <li><input type="radio" name="likert1" value="1" /><br /> I've never heard </li>
+        <li><input type="radio" name="likert1" value="2" /><br /> Sometimes </li>
+        <li><input type="radio" name="likert1" value="3" /><br /> Hear this all the time</li>
+        <li><input type="radio" name="likert1" value="4" /><br /> Unsure</li>
+        <li><input type="radio" name="likert1" value="5" /><br /> Don't want to answer</li>
+      </ul>
+    </div>
+
+    <div id="audiolikertQ2">
+      <div id="audiobody">How often do you speak ina manner similar to the sentence you just heard?</div>
+      <ul id="audiolikert2" class="likert">
+        <li><input type="radio" name="likert2" value="1" /><br /> I never say this </li>
+        <li><input type="radio" name="likert2" value="2" /><br /> Only with families and friends</li>
+        <li><input type="radio" name="likert2" value="3" /><br /> All the time</li>
+        <li><input type="radio" name="likert2" value="4" /><br /> Unsure</li>
+        <li><input type="radio" name="likert2" value="5" /><br /> Don't want to answer</li>
+      </ul>
+    </div>
+
+    <div id="audiolikertnext">
+      <input type="button" id="audiocontinue" value="Continue"></input>
+    </div>
+  </div>
+</div>
+
+<style>
+
+#email{
+
+    /* margin: 0 auto;
+    width: 75%;
+    padding: 50px;
+    text-align: center; */
+    
+    
+    border: 1px solid black;
+      position:absolute;
+      text-align: center;
+      width: 80%;
+      height: 50%;
+      left:10%;
+      top:10%;
+      margin: auto;
+      background-color: white;
+
+}
+
+#skip {
+    margin-left:80%;
+    margin-top: 20%;
+    width: 5%;
+    height: 10%;
+    border-top: 15px solid rgb(158,206,203);
+    border-right: 15px solid rgb(158,206,203);;
+    border-left: 0px solid white;
+    border-bottom: 0px solid white;
+    background-color: white; 
+    transform: rotate(45deg);
+    /*border-radius: 15%;*/
+    position: absolute;
+    /* right: 30;
+    bottom: 30; */
+    -webkit-appearance: none;
+    border-radius: 0;
+
+  }
+
+  #enter_email
+{
+    font-size:16pt;
+    min-height:50px;
+    min-width: 100px;
+}
+
+#enter {
+  border-color: black;
+  background-color: rgb(158,206,203);;
+}
+
+
+  #skipping_div {
+    position: fixed;
+    left: 50%;
+    bottom: 40px;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+  }
+      
+</style>
+     
+      <div id="emailpage" class="page">
+        <div>
+            <div id = "email">
+                <h1>If you are an <mark>adult participant</mark>, please enter your email in the box below. Your email will be used to contact you for compensation</h1>
+        
+                <input type="text" id = "enter_email" />
+                <input type="button" id = "enter" value = "Enter" class = "exit" />
+                <br>
+                <h1><mark>If you are a parent of a child particpant, skip this page.</mark></h1> 
+                </div>
+            </div>
+            <input type="button" id = "skip" class = "exit" />
+        </div>
+      </div>
+      
+<style>
+
+#multibody {
+  background-color: white;
+  border-radius:5px;
+  padding-left:10px;
+  padding-right:10px;
+  padding-top:4px;
+  padding-bottom:4px;
+  margin:10px;
+}
+
+#multichoices {
+  text-align:center;
+}
+
+#multi > li {
+  display:inline-block;
+  text-align:center;
+  padding: 10px;
+
+  border-radius:4px;
+  margin:5px;
+  border:1px solid gray;
+}
+
+#multicontinue {
+  background-color: #6caba7;
+  text-align:center;
+}
+
+#multimain {
+  width:60%;
+  left:20%;
+  position:absolute;
+}
+
+#multinext {
+  text-align:right;
+}
+
+</style>
+
+<div id="multichoice" class="page">
+  <div id="multimain">
+    <div id="multibody"></div>
+
+    <div id="multichoices">
+      <ul id="multi" class="multi">
+
+      </ul>
+    </div>
+
+    <div id="multinext">
+      <input type="button" id="multicontinue" value="Continue"></input>
+    </div>
+  </div>
+</div>
+
+<style>
+
+.dialectbody {
+  background-color: white;
+  border-radius:5px;
+  padding-left:10px;
+  padding-right:10px;
+  padding-top:4px;
+  padding-bottom:4px;
+  margin:10px;
+}
+
+.dialectchoices {
+  text-align:center;
+}
+
+.dialect > li {
+  display:inline-block;
+  text-align:center;
+  padding: 10px;
+
+  border-radius:4px;
+  margin:5px;
+  border:1px solid gray;
+}
+
+#dialectcontinue {
+  background-color: #6caba7;
+  text-align:center;
+}
+
+#dialectmain {
+  width:60%;
+  left:20%;
+  position:absolute;
+}
+
+#dialectnext {
+  text-align:right;
+}
+
+</style>
+
+<div id="dialect" class="page">
+  <div id="dialectmain">
+    <div class="dialectbody">Do you use <span class="dialectname">2</span>?</div>
+    <div class="dialectchoices">
+      <ul class="dialect">
+        <li><input type="radio" name="dialect_yn" value="Yes" /><br />Yes</li>
+        <li><input type="radio" name="dialect_yn" value="No" /><br />No</li>
+      </ul>
+    </div>
+
+    <div class="dialectbody">How often do you use <span class="dialectname">2</span>?</div>
+    <div class="dialectchoices">
+      <ul class="dialect">
+        <li><input type="radio" name="dialect_how_often" value="Never" /><br />Never</li>
+        <li><input type="radio" name="dialect_how_often" value="Rarely" /><br />Rarely</li>
+        <li><input type="radio" name="dialect_how_often" value="Sometimes" /><br />Often</li>
+        <li><input type="radio" name="dialect_how_often" value="Often" /><br />Sometimes</li>
+        <li><input type="radio" name="dialect_how_often" value="Always" /><br />Always</li>
+      </ul>
+    </div>
+
+    <div class="dialectbody">How many of your friends use <span class="dialectname">2</span>?</div>
+    <div class="dialectchoices">
+      <ul class="dialect">
+        <li><input type="radio" name="dialect_friends" value="None" /><br />None</li>
+        <li><input type="radio" name="dialect_friends" value="Some" /><br />Some</li>
+        <li><input type="radio" name="dialect_friends" value="Most" /><br />Most</li>
+        <li><input type="radio" name="dialect_friends" value="All" /><br />All</li>
+      </ul>
+    </div>
+
+    <div class="dialectbody">How many of your immediate family members (parents, brother(s), sister(s), and children) use <span class="dialectname">2</span>?</div>
+    <div class="dialectchoices">
+      <ul class="dialect">
+        <li><input type="radio" name="dialect_family" value="None" /><br />None</li>
+        <li><input type="radio" name="dialect_family" value="Some" /><br />Some</li>
+        <li><input type="radio" name="dialect_family" value="Most" /><br />Most</li>
+        <li><input type="radio" name="dialect_family" value="All" /><br />All</li>
+      </ul>
+    </div>
+
+    <div class="dialectbody">Do you have any more comments about your experience with different dialects of English?</div>
+    <div class="dialectchoices">
+      <textarea id="dialect_info"></textarea>
+    </div>
+
+    <div id="dialectnext">
+      <input type="button" class="exit" id="dialectcontinue" value="Continue"></input>
+    </div>
+  </div>
+</div>
+
+<style>
+
+.demogbody {
+  background-color: white;
+  border-radius:5px;
+  padding-left:10px;
+  padding-right:10px;
+  padding-top:4px;
+  padding-bottom:4px;
+  margin:10px;
+}
+
+.demogchoices {
+  text-align:center;
+}
+
+.demog > li {
+  display:inline-block;
+  text-align:center;
+  padding: 10px;
+
+  border-radius:4px;
+  margin:5px;
+  border:1px solid gray;
+}
+
+#demogcontinue {
+  background-color: #6caba7;
+  text-align:center;
+}
+
+#demogmain {
+  width:60%;
+  left:20%;
+  position:absolute;
+}
+
+#demognext {
+  text-align:right;
+}
+
+</style>
+
+<div id="demog" class="page">
+  <div id="demogmain">
+    <div class="demogbody">How would you describe your gender?</div>
+    <div class="demogchoices">
+      <ul class="demog">
+        <li><input type="radio" name="demog_gender" value="Male" /><br />Male (including transgender men)</li>
+        <li><input type="radio" name="demog_gender" value="Female" /><br />Female (including transgender women)</li>
+        <li><input type="radio" name="demog_gender" value="Self-Describe" /><br />Prefer to self-describe as <input type="text" id="gender_custom" /></li>
+        <li><input type="radio" name="demog_gender" value="Prefer not to say" /><br />Prefer not to say</li>
+      </ul>
+    </div>
+
+    <div class="demogbody">Age</div>
+    <div class="demogchoices">
+      <input type="number" id="demog_age" />
+    </div>
+
+    <div class="demogbody">Zip Code of where you grew up <br /><i>If you lived in multiple places, pick the one that you find most representative.</i></div>
+    <div class="demogchoices">
+      <input type="number" id="demog_zip" />
+    </div>
+
+
+    <div class="demogbody">Ethnicity</div>
+    <div class="demogchoices">
+      <ul class="demog">
+        <li><input type="radio" name="demog_ethnicity" value="Hispanic" /><br />Hispanic</li>
+        <li><input type="radio" name="demog_ethnicity" value="Non-Hispanic" /><br />Non-Hispanic</li>
+      </ul>
+    </div>
+
+    <div class="demogbody">Race</div>
+    <div class="demogchoices">
+      <ul class="demog">
+        <li><input type="checkbox" name="demog_race" value="American Indian/Alaska native" /><br />American Indian/Alaska native</li>
+        <li><input type="checkbox" name="demog_race" value="Asian" /><br />Asian</li>
+        <li><input type="checkbox" name="demog_race" value="Native Hawaiian or Other Pacific Islander" /><br />Native Hawaiian or Other Pacific Islander</li>
+        <li><input type="checkbox" name="demog_race" value="Black or African American" /><br />Black or African American</li>
+        <li><input type="checkbox" name="demog_race" value="More than one race" /><br />More than one race</li>
+        <li><input type="checkbox" name="demog_race" value="Unknown" /><br />Unknown</li>
+        <li><input type="checkbox" name="demog_race" value="Do not wish to report" /><br />Do not wish to report</li>
+      </ul>
+    </div>
+
+    <div class="demogbody">Name of University</div>
+    <div class="demogchoices">
+      <input type="text" id="demog_university" />
+    </div>
+
+    <div class="demogbody">Year in College</div>
+    <div class="demogchoices">
+      <ul class="demog">
+        <li><input type="radio" name="demog_year" value="Freshman" /><br />Freshman</li>
+        <li><input type="radio" name="demog_year" value="Sophomore" /><br />Sophomore</li>
+        <li><input type="radio" name="demog_year" value="Junior" /><br />Junior</li>
+        <li><input type="radio" name="demog_year" value="Senior" /><br />Senior</li>
+      </ul>
+    </div>
+
+    <div class="demogbody">Please list your parents’ country/countries of origin</div>
+    <div class="demogchoices">
+      <input type="text" id="demog_countries"></input>
+    </div>
+
+    <div id="demognext">
+      <input type="button" class="exit" id="demogcontinue" value="Continue"></input>
+    </div>
+  </div>
+</div>
+
+<style>
+
+    
+    #welcomeexp {
+
+      border: 1px solid black;
+      position:absolute;
+      text-align: center;
+      width: 80%;
+      height: 85%;
+      left:10%;
+      top:10%;
+      margin: auto;
+      background-color: white;
+    }
+
+    
+   
+
+
+    #welcomeexp > #adult_par > #gotoAdultPage {
+      
+      color: white;
+      font-size: 20px;
+      
+      text-align: center;
+      background-color:rgb(158,206,203);;
+      display: block;
+      margin: 0 auto;
+
+     
+      height: 100px;
+      width: 300px;
+      border-radius: 50%;
+    }
+
+    #welcomeexp > #game > #gotoGame {
+      
+      color: white;
+      font-size: 20px;
+      
+      text-align: center;
+      background-color:rgb(158,206,203);
+      display: block;
+      margin: 0 auto;
+
+     
+      height: 100px;
+      width: 300px;
+      border-radius: 50%;
+    }
+
+    
+    #welcomeexp > #adult_par{
+        display: table;
+        margin: 0 auto;
+    }
+
+    #welcomeexp > #game{
+        display: table;
+        margin: 0 auto;
+    }
+
+
+
+
+    #welcomeexp > #welcome {
+      font-size: 400%;
+    }
+
+ 
+
+    </style>
+    
+    <div id="welcomeexp" class="page">
+      <h1 id = "welcome">Welcome to the Great Terp Rescue!</h1>
+      <div id = "game">
+          <h1>If you are a parent of a child participant click here to start the game:</h1>
+          <input id = "gotoGame" class="endpg" type="button" value = "Start Game" ></input>
+     </div>
+      
+      <div id = "adult_par">
+        <h1>If you are an adult participant please click here to start:</h1> 
+        <input id = "gotoAdultPage"  type="button"value = "Start" ></input>
+      </div>
+      
+    </div>
+<style>
+
+#welcomesurvey {
+  
+  border: 1px solid black;
+  position:absolute;
+  text-align: center;
+  width: 75%;
+  height: 75%;
+  left:15%;
+  top:10%;
+  margin: auto;
+  background-color: white;
+}
+#welcomesurvey > #cont {
+  margin-left: 15%;
+  border-color: black;
+  background-color: rgb(158,206,203);
+  position: absolute;
+  right: 50;
+  bottom: 15;
+}
+
+#surveyWelcome {
+  font-size: 400%;
+  text-align:center;
+}
+
+.entries{
+  font-size: 200%;
+}
+</style>
+<div id="welcomesurvey" class="page">
+
+
+    <h1 id = "surveyWelcome">Welcome to the Survey!</h1>
+
+    <h2 class = "entries" >Please enter your email below</h2>
+    <input type="text" id = "enter_email2" />
+
+    <h2 class = "entries">Please enter your Participant ID below</h2>
+    <input type="text" id = "enter_id" />
+
+    <br>
+
+    <input id = "cont" class="exit" type="button" value = "Continue" ></input>
+
+    
+  </div>
+<style>
+
+    
+    #welcomeadult {
+
+      border: 1px solid black;
+      position:absolute;
+      text-align: center;
+      width: 80%;
+      height: 85%;
+      left:10%;
+      top:10%;
+      margin: auto;
+      background-color: white;
+    }
+
+    
+   
+
+
+    #welcomeadult > #survey > #gotoSurvey {
+      
+      color: white;
+      font-size: 20px;
+      
+      text-align: center;
+      background-color:rgb(158,206,203);;
+      display: block;
+      margin: 0 auto;
+
+     
+      height: 100px;
+      width: 300px;
+      border-radius: 50%;
+    }
+
+    #welcomeadult > #greatescape > #startGame {
+      
+      color: white;
+      font-size: 20px;
+      
+      text-align: center;
+      background-color:rgb(158,206,203);
+      display: block;
+      margin: 0 auto;
+
+     
+      height: 100px;
+      width: 300px;
+      border-radius: 50%;
+    }
+
+    
+    #welcomeadult > #survey{
+        display: table;
+        margin: 0 auto;
+    }
+
+    #welcomeadult > #greatescape{
+        display: table;
+        margin: 0 auto;
+    }
+
+
+
+
+    #welcomeadult > #info {
+      font-size: 200%;
+    }
+
+ 
+
+    </style>
+    
+    <div id="welcomeadult" class="page">
+      <h1 id = "info">Please first complete the Great Terp Rescue game  which takes about 10 minutes to play. 
+          At the end, you will be asked to go on to complete the survey which takes about 30 minutes to complete. 
+          If you are returning to this link to complete the survey, please start the survey.</h1>
+      <div id = "greatescape">
+          <h1>Click here to start the Greate Terp Rescue:</h1>
+          <input id = "startGame" class="endpg" type="button" value = "Start Game" ></input>
+     </div>
+      
+      <div id = "survey">
+        <h1>Click here to start the survey:</h1> 
+        <input id = "gotoSurvey"  type="button"value = "Start Survey" ></input>
+      </div>
+      
+    </div>
+<div id="sendsurvey" class="page">
+    <h1 id = "sendingdata">Sending Data</h1>
+</div>
+<div id="sendgame" class="page">
+    <h1 id = "sendingdatagame">Sending Data</h1>
+</div>
     <script src="pouchdb-7.2.1.min.js"></script>
-    <script src="pages.js"></script>
+    <script src="pages1.js"></script>
 
     <script>// This is the Fisher-Yates shuffle
 // Taken from https://bost.ocks.org/mike/shuffle/
 function shuffle(array) {
   var m = array.length, t, i;
- 
+
   // While there remain elements to shuffle…
   while (m) {
 
@@ -698,7 +1407,7 @@ class AudioAtlas {
           this.loaded = true;
           this.audio.pause();
           console.log("canplaythrough");
-          
+
           audio_loaded.i = true;
         }
       }.bind(this));
@@ -724,7 +1433,7 @@ class AudioAtlas {
       }.bind(this), false);
 
       this.loaded = false;
-  }
+    }
 
   playFile(name) {
     if (name in this.locations) {
@@ -961,12 +1670,12 @@ class DocPage extends AudioPage {
 }
 
 
-$("#skip").bind("click touch", function() {
-  console.log("helo");
-  globalBook.pages[globalBook.current_page].deactivate();
-  globalBook.current_page = globalBook.pages.length - 3;
-  globalBook.pages[globalBook.current_page].play();
-});
+// $("#skip").bind("click touch", function() {
+//   console.log("helo");
+//   globalBook.pages[globalBook.current_page].deactivate();
+//   globalBook.current_page = globalBook.pages.length - 3;
+//   globalBook.pages[globalBook.current_page].play();
+// });
 
 // Modified from https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices
 function getAudioDevices() {
@@ -1404,7 +2113,8 @@ class EndPage extends Page {
   
     play() {
       $("#end-page").show();
-      turtledance(".turtles > img");
+      document.getElementById('participant').innerHTML = "Participant ID: " + userID; 
+      turtledance("#turtles > img");
       
     }
   
@@ -1413,8 +2123,14 @@ class EndPage extends Page {
     }
   }
 
-  $(".endpg").bind("click touch", function() {
-    window.close();
+  $("#exit").bind("click touch", function() {
+    window.alert("Please close this window");
+  });
+
+  $("#continue").bind("click touch", function() {
+    $("#end-page").hide();
+    addSurveyPages();
+    globalBook.nextpage();
   });
 class ChooseList extends Page {
     constructor() {
@@ -1646,48 +2362,411 @@ $("#preload_button").bind("click touch", function() {
 
 $(window).on("load", loadImages);
 
-
-// https://www.tutorialspoint.com/pouchdb/pouchdb_synchronizationpn.htm#:~:text=You%20can%20synchronize%20the%20databases,have%20used%20the%20method%20PouchDB.
-var db = new PouchDB('ab_study');
-
-/*create CouchDB database (personal cloudant db for testng purposes) */
-var remoteCouch = "https://08c3bb2d-aec5-48c2-9972-362ab894e00b-bluemix:c087461717c7e0e15d1592c1505f749fad973517380eb1c36ebe1588922002f9@08c3bb2d-aec5-48c2-9972-362ab894e00b-bluemix.cloudantnosqldb.appdomain.cloud/ab-study";
-
-
-
-
-//implement sync function
-function sync(){
-  //syncDom.setAttribute('data-sync-state', 'syncing');
-  var opts = {live: true, retry: true};
-  //two way sync
-  db.sync(remoteCouch, opts);
+var audio_likert_clicked = [-1, -1];
+function check_audio_clicked() {
+  if (audio_likert_clicked[0] != -1 && audio_likert_clicked[1] != -1) {
+    $('#audiocontinue').show();
+  }
 }
 
-//add new data to PouchDB, adds all the logged data for a single game as a new document
-function addData(test_data){
-  var test = {
-      _id: new Date().toISOString(),
-      data: test_data,
-    };
-    db.put(test).then(function(result){
-      console.log(result);
-    }).catch(function(err){
-      console.log(err);
+$("input[name='likert1']").on("change", function(e) {
+  audio_likert_clicked[0] = parseInt(this.value);
+
+  check_audio_clicked();
+
+  return true;
+});
+
+$("input[name='likert2']").on("change", function(e) {
+  audio_likert_clicked[1] = parseInt(this.value);
+
+  check_audio_clicked();
+
+  return true;
+});
+
+function audio_likert_reset() {
+  $('#audiolikert1 > li > input')[audio_likert_clicked[0] - 1].checked = false;
+  $('#audiolikert2 > li > input')[audio_likert_clicked[1] - 1].checked = false;
+
+  audio_likert_clicked[0] = -1;
+  audio_likert_clicked[1] = -1;
+}
+
+class AudioQuestionPage extends AudioPage {
+  constructor(page, audio) {
+    super(page, audio, 50);
+    this.clicked = -1;
+  }
+
+  after_audio() {
+    $("#audiolikertQ1").show();
+    $("#audiolikertQ2").show();
+
+    $('#audiobutton').css({"background-color": "#6caba7",
+                           "pointer-events": "auto",
+                           "cursor": "pointer"});
+  }
+
+  play_me() {
+    $('#audiobutton').css({"background-color": "gray",
+                           "pointer-events": "none",
+                           "cursor": "default"});
+    this.splay();
+  }
+
+  play() {
+    this.splay = super.play;
+    $("#audiobutton").bind('click touch', this.play_me.bind(this));
+
+    $("#audiocontinue").bind('click touch', function() {
+      survey_log(audio_likert_clicked);
+      globalBook.nextpage();
     });
+
+    $('#audiocontinue').hide()
+
+    $('#audiobutton').css({"background-color": "gray",
+                           "pointer-events": "none",
+                           "cursor": "default"});
+
+    $("#audiolikertQ1").hide();
+    $("#audiolikertQ2").hide();
+
+
+    $("#audioquestion").show();
+
+    this.setTimeout(this.play_me.bind(this), 500);
+  }
+
+  deactivate() {
+    audio_likert_reset();
+
+    $("#audiobutton").unbind('click touch');
+    $("#audiocontinue").unbind('click touch');
+    $("#audioquestion").hide();
+  }
 }
 
-if (remoteCouch) {
-  sync();
-}</script>
+class EmailPage extends Page {
+    constructor() {
+      super("email_page");
+    }
+  
+    play() {
+      $("#emailpage").show();
+    }
+  
+    deactivate() {
+      if (document.getElementById("enter_email").value != document.getElementById("enter_email").defaultValue){
+        email = document.getElementById("enter_email").value;
+        var dat = [(new Date()).getTime(),
+          userID,
+          listIndex + 1,
+          email,
+          -1,
+          -1,
+          -1, 
+          -1,
+          -1,
+          "",
+          "",
+          "",
+          ""];
+
+          logged_data.push(dat);
+      }
+      super.deactivate();
+      $("#emailpage").hide();
+    }
+  }
+var multi_clicked = -1;
+$("#multi").on("change", "li > input", function(e) {
+  multi_clicked = parseInt(this.value);
+
+  $('#multinext').show();
+
+  return true;
+});
+
+function multichoice_reset() {
+  multi_clicked = -1;
+}
+
+class MultiChoicePage extends Page {
+  constructor(page, promp, choices) {
+    super(page);
+
+    this.prompt = promp;
+
+    this.choices = choices;
+  }
+
+  play() {
+    $("#multibody").html(`<h3>${this.prompt}</h3>`);
+    for(var i=0; i<this.choices.length; i++) {
+      $("#multi").append(`<li><input type="radio" name="multichoice" value="${i}" /><br /> ${this.choices[i]}</li>`);
+    }
+
+    $("#multicontinue").bind('click touch', function() {
+      survey_log(multi_clicked);
+      globalBook.nextpage();
+    });
+
+    $("#multinext").hide();
+
+    $("#multichoice").show();
+  }
+
+  deactivate() {
+    multichoice_reset();
+
+    $("#multi").empty();
+
+    $("#multicontinue").unbind('click touch');
+
+    $("#multichoice").hide();
+  }
+}
+
+let dialect_radios = ["dialect_yn", "dialect_how_often", "dialect_friends", "dialect_family"];
+
+class DialectSurveyPage extends Page {
+  constructor(page, di_name) {
+    super(page);
+
+    this.dialect_name = di_name;
+  }
+
+  log() {
+    for(var i in dialect_radios) {
+      survey_log_named(this.dialect_name+"_"+dialect_radios[i], get_radio(dialect_radios[i]));
+    }
+
+    var v = $("#dialect_info").val();
+
+    if (v != "") survey_log_named(this.dialect_name+"_feedback", v);
+  }
+
+  clear() {
+    for(var i in dialect_radios) {
+      clear_radio(dialect_radios[i]);
+    }
+
+    $("#dialect_info").val("");
+  }
+
+  play() {
+    $(".dialectname").html(this.dialect_name);
+
+    $("#dialect").show();
+  }
+
+  deactivate() {
+    this.log();
+    this.clear();
+    $("#dialect").hide();
+  }
+}
+
+function get_radio(radioname) {
+  var ret = "";
+  $(`input[name='${radioname}']`).each(function() {
+    if ($(this).prop("checked")) ret = $(this).attr("value");
+  });
+
+  return ret;
+}
+
+function get_checkbox(checkboxname) {
+  var ret = [];
+
+  $(`input[name='${checkboxname}']`).each(function() {
+    if ($(this).prop("checked")) ret.push($(this).attr("value"));
+  });
+
+  return ret;
+}
+
+function clear_radio(radioname) {
+  $(`input[name='${radioname}']`).each(function() {
+    $(this).prop("checked", 0)
+  });
+}
+
+let demog_radios = ["demog_gender", "demog_ethnicity", "demog_year"];
+let demog_checkboxes = ["demog_race"];
+let demog_text = ["gender_custom", "demog_age", "demog_zip", "demog_university", "demog_countries"];
+
+class DemogSurveyPage extends Page {
+  constructor(page) {
+    super(page);
+  }
+
+  log() {
+    for(var i in demog_radios) {
+      survey_log_named(demog_radios[i], get_radio(demog_radios[i]));
+    }
+
+    for(var i in demog_checkboxes) {
+      var values = get_checkbox(demog_checkboxes[i]);
+      for (var j in values) {
+        survey_log_named(demog_checkboxes[i], values[j]);
+      }
+    }
+
+    for(var i in demog_text) {
+      var v = $(`#${demog_text[i]}`).val();
+      if ($(`#${demog_text[i]}`).attr("type") == "number") {
+        survey_log_named(demog_text[i], parseInt(v));
+      } else {
+        survey_log_named(demog_text[i], v);
+      }
+    }
+  }
+
+  clear() {
+    for(var i in demog_radios) {
+      clear_radio(demog_radios[i]);
+    }
+
+    for(var i in demog_checkboxes) {
+      clear_radio(demog_checkboxes[i]);
+    }
+
+    for(var i in demog_text) {
+      var v = $(`#${demog_text[i]}`).val('');
+    }
+  }
+
+  play() {
+    $("#demog").show();
+  }
+
+  deactivate() {
+    this.log();
+    this.clear();
+    $("#demog").hide();
+  }
+}
+
+class WelcomeExperimentPage extends Page {
+    constructor() {
+      super("welcomeexp");
+    }
+  
+    play() {
+      $("#welcomeexp").show();
+    }
+
+    deactivate() {
+      super.deactivate();
+    }
+  }
+
+  $("#gotoAdultPage").bind("click touch", function() {
+    globalBook.pages.push(new AdultWelcomePage());
+    $("#welcomeexp").hide();
+    globalBook.nextpage();
+  });
+
+  $("#gotoGame").bind("click touch", function() {
+    addGamePages();
+    $("#welcomeexp").hide();
+    globalBook.nextpage();
+  });
+class WelcomeSurveyPage extends Page {
+    constructor() {
+      super("welcomesurvey");
+    }
+  
+    play() {
+      $("#welcomesurvey").show();
+      document.getElementById("enter_email2").value = email;
+      document.getElementById("enter_id").value = userID;
+         
+    }
+
+    deactivate() {
+      var email2 = document.getElementById("enter_email2").value;
+      console.log(email2);
+      userID = parseInt(document.getElementById("enter_id").value);
+      survey_log(email2);
+      
+      $("#welcomesurvey").hide();
+      super.deactivate();
+    }
+  }
+
+
+class AdultWelcomePage extends Page {
+    constructor() {
+      super("welcomeadult");
+    }
+  
+    play() {
+      $("#welcomeadult").show();
+    }
+
+    deactivate() {
+      super.deactivate();
+    }
+  }
+
+  $("#gotoSurvey").bind("click touch", function() {
+    addSurveyPages();
+    $("#welcomeadult").hide();
+    globalBook.nextpage();
+  });
+
+  $("#startGame").bind("click touch", function() {
+    addGamePages();
+    $("#welcomeadult").hide();
+    globalBook.nextpage();
+  });
+class SendDataSurveyPage extends Page {
+    constructor() {
+      super("send_data_survey");
+    }
+  
+    play() {
+      $("#sendsurvey").show();
+        export_survey();
+      
+    }
+  
+    deactivate() {
+      super.deactivate();
+    }
+  }
+
+
+class SendDataExpPage extends Page {
+    constructor() {
+      super("send_data_exp");
+    }
+  
+    play() {
+      $("#send").show();
+        export_data();
+    }
+  
+    deactivate() {
+      $("#send").hide();
+      super.deactivate();
+    }
+  }
+
+</script>
 
 
     <script src="lists.js"></script> <!-- NOTE FOR RICKY: DELETE THIS WHEN ADDING LIST CODE -->
 
     <script>
-      let userID = 2; // NOTE FOR RICKY: USERID INSERTED HERE
+      let userID = 0; // NOTE FOR RICKY: USERID INSERTED HERE
       let listIndex = 0; // NOTE FOR RICKY: LIST INDEX INSERTED HERE
       let list = lists[listIndex]; // NOTE FOR RICKY: CURRENT LIST INSERTED HERE
+      let email = "";
     </script>
 
     <script src="run.js"></script>

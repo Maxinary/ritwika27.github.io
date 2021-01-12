@@ -21,202 +21,183 @@ all_pages = []
 var imgSourceDirectory = "";
 var audioSourceDirectory = "";
 
-//all_pages.push(new PreloadPage());
+//all_pages.push(new DialectSurveyPage("pagename", "Dialect 1"));
+//all_pages.push(new AudioQuestionPage("aq2", "WAVFiles/Reinforcement/Slide6_9_CorrectFeedback.mp3"));
+//all_pages.push(new DialectSurveyPage("pagename", "Dialect 1"));
+//all_pages.push(new AudioQuestionPage("aq2", "WAVFiles/Reinforcement/Slide6_9_CorrectFeedback.mp3"));
+//all_pages.push(new DialectSurveyPage("pagename", "Dialect 2"));
+//all_pages.push(new DemogSurveyPage("pagename"));
 
-all_pages.push(new DocPage("instruction page", "<br/> <br/> Participant ID<br />\
+all_pages.push(new WelcomeExperimentPage());
+
+
+all_pages.push(new WelcomeExperimentPage());
+
+function addGamePages(){
+
+       var imgSourceDirectory = "";
+       var audioSourceDirectory = "";
+       all_pages.push(new DocPage("instruction page", "<br/> <br/> Participant ID<br />\
                            <hr><div style='color:red;text-align:center;width:100%'>"+userID+"</div><br/> <br/> ",
                            "90%", "60px", "Ready!",
                            undefined));
-//all_pages.push(new ConsentPage());
-
-all_pages.push(new ChooseList());
-
-// all_pages.push(new DocPage("instruction page", "Caregiver Instructions<br />\
-//                               <ul>\
-//                               <li>Please do not answer questions or provide hints about the sentences</li>\
-//                               <li>Encourage your child to try their best, have fun, and complete the entire game</li>\
-//                               <li>If possible, please use headphones and sit in a quiet room.</li></ul>",
-//                               "90%", "40px", "Ready!",
-//                               "WAVFiles/Introduction_Instructions/Slide3CGInstructions.wav"))
 
 
-all_pages.push(new TestHeadphonesPage());
-
-all_pages.push(new ImagePage("intro", "customImages/Coverpage.png", 3000));
-
-all_pages.push(new TurtleRunPage());
-
-all_pages.push(new Slide7Page());
+       all_pages.push(new EmailPage());
+       all_pages.push(new ChooseList());
 
 
-var imgSourceDirectory = "FinalImagesALL/ImgaesforExamples/";
-var audioSourceDirectory = "WAVFiles/Introduction_Instructions/";
-all_pages.push(new LearnQuadPage("P_J was playing the piano",
-              [new Choice("T",
-                      "Boy1_Piano.png"),
-               new Choice("C1",
-                      "Boy2_3_Paper.png"),
-               new Choice("C2",
-                      "Girl1_Movie.png"),
-               new Choice("C3",
-                      "Girl2_3_Table.png")],
+       all_pages.push(new TestHeadphonesPage());
 
-              "Slide6_Jeremiah.wav",
-              0,
+       all_pages.push(new ImagePage("intro", "customImages/Coverpage.png", 3000));
+
+       all_pages.push(new TurtleRunPage());
+
+       all_pages.push(new Slide7Page());
+
+
+       var imgSourceDirectory = "FinalImagesALL/ImgaesforExamples/";
+       var audioSourceDirectory = "WAVFiles/Introduction_Instructions/";
+       all_pages.push(new LearnQuadPage("P_J was playing the piano",
+                     [new Choice("T",
+                            "Boy1_Piano.png"),
+                     new Choice("C1",
+                            "Boy2_3_Paper.png"),
+                     new Choice("C2",
+                            "Girl1_Movie.png"),
+                     new Choice("C3",
+                            "Girl2_3_Table.png")],
+
+                     "Slide6_Jeremiah.wav",
+                     0,
+                     "Slide6_9_CorrectFeedback.mp3",
+                     "Slide6_IncorrectFeedback.mp3",
+                     true));
+
+       all_pages.push(new LearnQuadPage("P_CM is watching the movie",
+              [new Choice("C1",
+                            "Boy1_Piano.png"),
+                     new Choice("C2",
+                            "Boy2_3_Paper.png"),
+                     new Choice("T",
+                            "Girl1_Movie.png"),
+                     new Choice("C3",
+                            "Girl2_3_Table.png")],
+
+              "Slide6_CMmovie.wav",
+              2,
               "Slide6_9_CorrectFeedback.mp3",
               "Slide6_IncorrectFeedback.mp3",
               true));
 
-all_pages.push(new LearnQuadPage("P_CM is watching the movie",
-             [new Choice("C1",
-                     "Boy1_Piano.png"),
-              new Choice("C2",
-                     "Boy2_3_Paper.png"),
-              new Choice("T",
+       all_pages.push(new LearnQuadPage("P_CJ are cutting the paper",
+              [new Choice("C1",
+                            "Boy1_Piano.png"),
+                     new Choice("T",
+                            "Boy2_3_Paper.png"),
+                     new Choice("C2",
+                            "Girl1_Movie.png"),
+                     new Choice("C3",
+                            "Girl2_3_Table.png")],
+
+              "Slide6_CJ.wav",
+              1,
+              "Slide6_9_CorrectFeedback.mp3",
+              "Slide6_IncorrectFeedback.mp3",
+              true));
+
+       all_pages.push(new LearnQuadPage("P_CM are cleaning the table",
+              [new Choice("C1",
+                            "Boy1_Piano.png"),
+                     new Choice("C2",
+                            "Boy2_3_Paper.png"),
+                     new Choice("C3",
+                            "Girl1_Movie.png"),
+                     new Choice("T",
+                            "Girl2_3_Table.png")],
+
+              "Slide6_CMtable.wav",
+              3,
+              "Slide6_9_CorrectFeedback.mp3",
+              "Slide6_IncorrectFeedback.mp3",
+              true));
+
+       var audioSourceDirectory = "WAVFiles/Introduction_Instructions/";
+
+
+
+       all_pages.push(new LearnQuadPage("P_Jeremiah is playing the piano himself",
+              [new Choice("T",
+                            "Boy1_Piano.png"),
+                     new Choice("C1",
+                            "Boy2_3_Piano.png"),
+                     new Choice("C2",
+                            "Girl1_Piano.png"),
+                     new Choice("C3",
+                            "Girl2_3_Piano.png")],
+
+              "Slide7_IntrotoEX.wav",
+              0,
+              "Slide6_9_CorrectFeedback.mp3",
+              "Slide7_IncorrectFeedback.mp3",
+              false));
+
+       var audioSourceDirectory = "WAVFiles/Examples/";
+
+       all_pages.push(new LearnQuadPage("P_CM is cleaning the table herself",
+              [new Choice("C1",
+                            "Boy1_Table.png"),
+                     new Choice("C2",
+                            "Boy2_3_Table.png"),
+                     new Choice("T",
+                            "Girl1_Table.png"),
+                     new Choice("C3",
+                            "Girl2_3_Table.png")],
+
+              "Slide8_CM_S_Table.wav",
+              2,
+              "Slide6_9_CorrectFeedback.mp3",
+              "Slide8_IncorrectFeedback.mp3",
+              false));
+
+
+
+       var audioSourceDirectory = "WAVFiles/Examples/";
+
+       all_pages.push(new LearnQuadPage("P_CM is watching the movie herself",
+              [new Choice("C1",
+                     "Boy1_Movie.png"),
+                     new Choice("C2",
+                     "Boy2_3_Movie.png"),
+                     new Choice("T",
                      "Girl1_Movie.png"),
-              new Choice("C3",
-                     "Girl2_3_Table.png")],
+                     new Choice("C3",
+                     "Girl2_3_Movie.png")],
 
-             "Slide6_CMmovie.wav",
-             2,
-             "Slide6_9_CorrectFeedback.mp3",
-             "Slide6_IncorrectFeedback.mp3",
-             true));
+              "Slide9_CM_S_Movie.wav",
+              2,
+              "Slide6_9_CorrectFeedback.mp3",
+              "Slide9_IncorrectFeedack.mp3",
+              false));
 
-all_pages.push(new LearnQuadPage("P_CJ are cutting the paper",
-             [new Choice("C1",
-                     "Boy1_Piano.png"),
-              new Choice("T",
-                     "Boy2_3_Paper.png"),
-              new Choice("C2",
-                     "Girl1_Movie.png"),
-              new Choice("C3",
-                     "Girl2_3_Table.png")],
+       all_pages.push(new LearnQuadPage("P_CM are cutting the paper together ",
+              [new Choice("C3",
+                            "Boy1_Paper.png"),
+                     new Choice("C2",
+                            "Boy2_3_Paper.png"),
+                     new Choice("C1",
+                            "Girl1_Paper.png"),
+                     new Choice("T",
+                            "Girl2_3_Paper.png")],
 
-             "Slide6_CJ.wav",
-             1,
-             "Slide6_9_CorrectFeedback.mp3",
-             "Slide6_IncorrectFeedback.mp3",
-             true));
+                     "slide10_CM_P_Paper.wav",
+              3,
+              "Slide6_9_CorrectFeedback.mp3",
+              "Slide10_IncorrectFeedback.mp3",
+              false));
 
-all_pages.push(new LearnQuadPage("P_CM are cleaning the table",
-             [new Choice("C1",
-                     "Boy1_Piano.png"),
-              new Choice("C2",
-                     "Boy2_3_Paper.png"),
-              new Choice("C3",
-                     "Girl1_Movie.png"),
-              new Choice("T",
-                     "Girl2_3_Table.png")],
-
-             "Slide6_CMtable.wav",
-             3,
-             "Slide6_9_CorrectFeedback.mp3",
-             "Slide6_IncorrectFeedback.mp3",
-             true));
-
-var audioSourceDirectory = "WAVFiles/Introduction_Instructions/";
-
-// all_pages.push(new QuadAudioPage("slide7IntroEX",
-//                 "Slide7_IntrotoEX.wav",
-
-//                 [new Choice("Boy1",
-//                         "Boy1_Piano.png"),
-//                  new Choice("Boy2_3",
-//                         "Boy2_3_Piano.png"),
-//                  new Choice("Girl1",
-//                         "Girl1_Piano.png"),
-//                  new Choice("Girl2_3",
-//                         "Girl2_3_Piano.png")],
-//                 ));
-
-// var audioSourceDirectory = "WAVFiles/Examples/";
-
-all_pages.push(new LearnQuadPage("P_Jeremiah is playing the piano himself",
-             [new Choice("T",
-                     "Boy1_Piano.png"),
-              new Choice("C1",
-                     "Boy2_3_Piano.png"),
-              new Choice("C2",
-                     "Girl1_Piano.png"),
-              new Choice("C3",
-                     "Girl2_3_Piano.png")],
-
-             "Slide7_IntrotoEX.wav",
-             0,
-             "Slide6_9_CorrectFeedback.mp3",
-             "Slide7_IncorrectFeedback.mp3",
-             false));
-
-var audioSourceDirectory = "WAVFiles/Examples/";
-
-all_pages.push(new LearnQuadPage("P_CM is cleaning the table herself",
-             [new Choice("C1",
-                     "Boy1_Table.png"),
-              new Choice("C2",
-                     "Boy2_3_Table.png"),
-              new Choice("T",
-                     "Girl1_Table.png"),
-              new Choice("C3",
-                     "Girl2_3_Table.png")],
-
-             "Slide8_CM_S_Table.wav",
-             2,
-             "Slide6_9_CorrectFeedback.mp3",
-             "Slide8_IncorrectFeedback.mp3",
-             false));
-
-// var audioSourceDirectory = "WAVFiles/Introduction_Instructions/";
-
-// all_pages.push(new QuadAudioPage("slide8Intro",
-//                 "Slide8_IntroToExperiment.wav",
-
-//                 [new Choice("Boy1",
-//                        "Boy1_Paper.png"),
-//                  new Choice("Boy2_3",
-//                        "Boy2_3_Paper.png"),
-//                  new Choice("Girl1",
-//                        "Girl1_Paper.png"),
-//                  new Choice("Girl2_3",
-//                        "Girl2_3_Paper.png")]
-//                 ));
-
-var audioSourceDirectory = "WAVFiles/Examples/";
-
-all_pages.push(new LearnQuadPage("P_CM is watching the movie herself",
-             [new Choice("C1",
-                    "Boy1_Movie.png"),
-              new Choice("C2",
-                    "Boy2_3_Movie.png"),
-              new Choice("T",
-                    "Girl1_Movie.png"),
-              new Choice("C3",
-                    "Girl2_3_Movie.png")],
-
-             "Slide9_CM_S_Movie.wav",
-             2,
-             "Slide6_9_CorrectFeedback.mp3",
-             "Slide9_IncorrectFeedack.mp3",
-             false));
-
-all_pages.push(new LearnQuadPage("P_CM are cutting the paper together ",
-             [new Choice("C3",
-                     "Boy1_Paper.png"),
-              new Choice("C2",
-                     "Boy2_3_Paper.png"),
-              new Choice("C1",
-                     "Girl1_Paper.png"),
-              new Choice("T",
-                     "Girl2_3_Paper.png")],
-
-              "slide10_CM_P_Paper.wav",
-             3,
-             "Slide6_9_CorrectFeedback.mp3",
-             "Slide10_IncorrectFeedback.mp3",
-             false));
-
-all_pages.push(new BeginPage("WAVFiles/Introduction_Instructions/slide11_LetsBegin.wav"));
-
+       all_pages.push(new BeginPage("WAVFiles/Introduction_Instructions/slide11_LetsBegin.wav"));
+}
 
 
 function addPages(index){
@@ -272,17 +253,43 @@ function addPages(index){
                              "customImages/box.png",
                              "FinalImagesALL/ImgaesforExamples/Boy_1_Solo.png",
                              "WAVFiles/Reinforcement/LandingPage7.wav"));
+    globalBook.pages.push(new SendDataExpPage());
     globalBook.pages.push(new EndPage());
 }
 
 
+//gets called when cont to survey is clicked, from beggining or after game end
+function addSurveyPages(){
+       globalBook.pages.push(new WelcomeSurveyPage());
+
+      for (var i in AAL) {
+        globalBook.pages.push(new AudioQuestionPage("AAL: "+AAL[i], AAL_Prefix+AAL[i]))
+      }
+
+      all_pages.push(new DialectSurveyPage("Dialect 1", "Dialect 1"));
+
+      for (var i in MAE) {
+       globalBook.pages.push(new AudioQuestionPage("MAE: "+MAE[i], MAE_Prefix+MAE[i]))
+      }
+      all_pages.push(new DialectSurveyPage("Dialect 2", "Dialect 2"));
+
+      for (var i in MLE) {
+       globalBook.pages.push(new AudioQuestionPage("MLE: "+MLE[i], MLE_Prefix+MLE[i]))
+      }
+      all_pages.push(new DialectSurveyPage("Dialect 3", "Dialect 3"));
+
+      all_pages.push(new DemogSurveyPage("demogrpahics"));
+
+       globalBook.pages.push(new SendDataSurveyPage());
+       //globalBook.pages.push(new EndSurveyPage());
+}
 
 var book = new Book(all_pages, 0);
 
 $(".page").hide();
 
 $(window).on("load", function() {
-    
+
  run_book(book);
 }
 );
@@ -291,7 +298,7 @@ $(window).on("load", function() {
 
 /*    all_pages.push(new QuadAudioPage("slide7Intro",
                   "Slide7_EvalName.wav",
-  
+
                   [new Choice("Boy1",
                           "Boy1_Piano.png"),
                    new Choice("Boy2_3",
@@ -301,9 +308,9 @@ $(window).on("load", function() {
                    new Choice("Girl2_3",
                           "Girl2_3_Table.png")],
                   ));
-  
+
   var audioSourceDirectory = "WAVFiles/Examples/";
-  
+
   all_pages.push(new LearnQuadPage("P_J played the piano himself",
                   [new Choice("T",
                           "Boy1_Piano.png"),
@@ -313,13 +320,13 @@ $(window).on("load", function() {
                           "Girl1_Movie.png"),
                    new Choice("C3",
                           "Girl2_3_Table.png")],
-  
+
                   "Slide71_J_S_PP.wav",
                   0,
                   "Slide6_9_CorrectFeedback.wav",
                   "Slide71_IncorrectFeedback.wav",
                   false));
-  
+
   all_pages.push(new LearnQuadPage("P_JR watched the movie herself",
                   [new Choice("C1",
                           "Boy1_Piano.png"),
@@ -329,18 +336,18 @@ $(window).on("load", function() {
                           "Girl1_Movie.png"),
                    new Choice("C3",
                           "Girl2_3_Table.png")],
-  
+
                   "Slide72_JR_S_WM.wav",
                   2,
                   "Slide6_9_CorrectFeedback.wav",
                   "Slide72_IncorrectFeedback.wav",
                   false));
-  
+
   var audioSourceDirectory = "WAVFiles/Introduction_Instructions/";
-  
+
   all_pages.push(new QuadAudioPage("slide8Intro",
                   "Slide8_IntroToExperiment.wav",
-  
+
                   [new Choice("Boy1",
                          "Boy1_Paper.png"),
                    new Choice("Boy2_3",
@@ -350,9 +357,9 @@ $(window).on("load", function() {
                    new Choice("Girl2_3",
                          "Girl2_3_Paper.png")]
                   ));
-  
+
   var audioSourceDirectory = "WAVFiles/Examples/";
-  
+
   all_pages.push(new LearnQuadPage("P_CJ cut the paper together",
                   [new Choice("C1",
                          "Boy1_Paper.png"),
@@ -362,13 +369,13 @@ $(window).on("load", function() {
                          "Girl1_Paper.png"),
                    new Choice("C3",
                          "Girl2_3_Paper.png")],
-  
+
                   "Slide8_CJ_P_CP.wav",
                   1,
                   "Slide6_9_CorrectFeedback.wav",
                   "Slide8_IncorrectFeedback.wav",
                   false));
-  
+
   all_pages.push(new LearnQuadPage("P_JR cleaned the table together",
                   [new Choice("C3",
                           "Boy1_Table.png"),
@@ -378,11 +385,11 @@ $(window).on("load", function() {
                           "Girl1_Table.png"),
                    new Choice("T",
                           "Girl2_3_Table.png")],
-  
+
                    "Slide9_JR_P_CT.wav",
                   3,
                   "Slide6_9_CorrectFeedback.wav",
                   "Slide9_IncorrectFeedback.wav",
                   false));
-  
+
   all_pages.push(new BeginPage("WAVFiles/Introduction_Instructions/Slide10_LetsBegin.wav")); */

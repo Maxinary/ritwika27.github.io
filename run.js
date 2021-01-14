@@ -264,10 +264,6 @@ function addSurveyPages() {
 
       for (var i in MLE) {
        globalBook.pages.push(new AudioQuestionPage("MLE: "+MLE[i], MLE_Prefix+MLE[i]))
-       globalBook.pages.push(new DocPage("survey instructions", "<br/> Instructions <br />\
-                             <p style='font-size:25px'>People from different places and backgrounds talk in different ways. In this section you will hear examples of people saying different phrases in three different dialects. We want you to play the example sentence and answer the corresponding questions. Feel free to play the example sentence more tan once. Please don't focus on what the person is saying, but how they are saying it.</p><br/>",
-                             "90%", "60px", "Ready!",
-                             undefined));
       }
       globalBook.pages.push(new DialectSurveyPage("Dialect 1", "Dialect 1"));
 

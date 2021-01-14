@@ -2422,7 +2422,8 @@ class AudioQuestionPage extends AudioPage {
 
   play() {
     this.splay = super.play;
-    $("#bluebar").css("width", `${Math.round(100*progress_aq/total_aq)}%``);
+    progress_aq += 1;
+    $("#bluebar").css("width", `${Math.round(100*(progress_aq+1)/(total_aq+1))}%`);
 
     $("#audiobutton").bind('click touch', this.play_me.bind(this));
 

@@ -259,48 +259,28 @@ function addPages(index){
 
 
 //gets called when cont to survey is clicked, from beggining or after game end
-function addSurveyPages(){
+function addSurveyPages() {
       globalBook.pages.push(new WelcomeSurveyPage());
 
-      globalBook.pages.push(new DocPage("survey instructions", "<br/> Instructions <br />\
-                             <p style="font-size:25px">People from different places and backgrounds talk in different ways. In this section you will hear examples of people saying different phrases in three different dialects. We want you to play the example sentence and answer the corresponding questions. Feel free to play the example sentence more tan once. Please don't focus on what the person is saying, but how they are saying it.</p><br/>",
-                             "90%", "60px", "Ready!",
-                             undefined));
-    
-      for (var i in AAL) {
-        globalBook.pages.push(new AudioQuestionPage("AAL: "+AAL[i], AAL_Prefix+AAL[i]))
-      }
-
-      all_pages.push(new DialectSurveyPage("Dialect 1", "Dialect 1"));
-
-    
-      globalBook.pages.push(new DocPage("dialect 2 intro", "<br /> Now you will listen to samples of Dialect 2.<br/> ",
-                             "90%", "60px", "Ready!",
-                             undefined));
-    
-      for (var i in MAE) {
-       globalBook.pages.push(new AudioQuestionPage("MAE: "+MAE[i], MAE_Prefix+MAE[i]))
-      }
-      all_pages.push(new DialectSurveyPage("Dialect 2", "Dialect 2"));
-
-      globalBook.pages.push(new DocPage("dialect 3 intro", "<br/> <br /> Now you will listen to samples of Dialect 3.<br/> This will be the last group of samples you listen to. <br/>  <br /> ",
-                             "90%", "60px", "Ready!",
-                             undefined));
-    
       for (var i in MLE) {
        globalBook.pages.push(new AudioQuestionPage("MLE: "+MLE[i], MLE_Prefix+MLE[i]))
       }
-      all_pages.push(new DialectSurveyPage("Dialect 3", "Dialect 3"));
+      globalBook.pages.push(new DialectSurveyPage("Dialect 1", "Dialect 1"));
 
-      all_pages.push(new DemogSurveyPage("demographics"));
-    
-       globalBook.pages.push(new SendDataSurveyPage());
+      for (var i in MAE) {
+       globalBook.pages.push(new AudioQuestionPage("MAE: "+MAE[i], MAE_Prefix+MAE[i]))
+      }
+      globalBook.pages.push(new DialectSurveyPage("Dialect 2", "Dialect 2"));
 
-        globalBook.pages.push(new DocPage("dialect 3 intro", "<br/> <br /> <b> Thank you for your participation!</b> <i>Our research team will contact you via email about compensation.</i> <br/>  <br /> ",
-                             "90%", "60px", "Ready!",
-                             undefined));
+      for (var i in AAL) {
+        globalBook.pages.push(new AudioQuestionPage("AAL: "+AAL[i], AAL_Prefix+AAL[i]))
+      }
+      globalBook.pages.push(new DialectSurveyPage("Dialect 3", "Dialect 3"));
 
-    //globalBook.pages.push(new EndSurveyPage());
+      globalBook.pages.push(new DemogSurveyPage("demogrpahics"));
+
+//       globalBook.pages.push(new SendDataSurveyPage());
+       //globalBook.pages.push(new EndSurveyPage());
 }
 
 var book = new Book(all_pages, 0);

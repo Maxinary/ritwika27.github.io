@@ -745,6 +745,7 @@
 
 <div id="audioquestion" class="page">
   <div id="audiomain">
+    <div style="text-align:center"><div style="margin:auto; width:108px; height:20px; border-style:solid; padding:4px"><div id="bluebar" style="background-color:blue;height:100%;"></div></div>
     <div id="audiobody" style="text-align:center"><h3>Please play the audio clip and answer the follow questions</h3></div>
     <div style="text-align:center; width:100%;">
       <input type="button" id="audiobutton" bgcolor="white" value="Play Audio"></input>
@@ -846,7 +847,7 @@
       <div id="emailpage" class="page">
         <div>
             <div id = "email">
-                <h1>If you are an <mark>adult participant</mark>, please enter your email in the box below. Your email will be used to contact you for compensation</h1>
+                <h1>If you are an <mark>adult participant</mark>, please enter your email in the box below. Your email will be used to contact you for compensation.</h1>
         
                 <input type="text" id = "enter_email" />
                 <input type="button" id = "enter" value = "Enter" class = "exit" />
@@ -1336,16 +1337,15 @@
     </style>
     
     <div id="welcomeadult" class="page">
-      <h1 id = "info">Please first complete the Great Terp Rescue game  which takes about 10 minutes to play. 
-          At the end, you will be asked to go on to complete the survey which takes about 30 minutes to complete. 
-          If you are returning to this link to complete the survey, please start the survey.</h1>
+      <h1 id = "info">First, complete the Great Terp Rescue game. This will take about 10 minutes to complete. At the end of the game, you will see a button that takes you to the survey portion of this task. The survey will take about 30 minutes to complete.
+      </h1>
       <div id = "greatescape">
-          <h1>Click here to start the Greate Terp Rescue:</h1>
+          <h1>Click here to start the Great Terp Rescue:</h1>
           <input id = "startGame" class="endpg" type="button" value = "Start Game" ></input>
      </div>
       
       <div id = "survey">
-        <h1>Click here to start the survey:</h1> 
+        <h1>If you are returning to this link to complete the survey, click here to start the survey:</h1> 
         <input id = "gotoSurvey"  type="button"value = "Start Survey" ></input>
       </div>
       
@@ -1433,7 +1433,7 @@ class AudioAtlas {
       }.bind(this), false);
 
       this.loaded = false;
-    }
+  }
 
   playFile(name) {
     if (name in this.locations) {
@@ -2369,6 +2369,9 @@ function check_audio_clicked() {
   }
 }
 
+var progress_aq = 0;
+var total_aq = 0;
+
 $("input[name='likert1']").on("change", function(e) {
   audio_likert_clicked[0] = parseInt(this.value);
 
@@ -2397,6 +2400,8 @@ class AudioQuestionPage extends AudioPage {
   constructor(page, audio) {
     super(page, audio, 50);
     this.clicked = -1;
+
+    total_aq += 1;
   }
 
   after_audio() {
@@ -2417,6 +2422,8 @@ class AudioQuestionPage extends AudioPage {
 
   play() {
     this.splay = super.play;
+    $("#bluebar").css("width", `${Math.round(100*progress_aq/total_aq)}%``);
+
     $("#audiobutton").bind('click touch', this.play_me.bind(this));
 
     $("#audiocontinue").bind('click touch', function() {

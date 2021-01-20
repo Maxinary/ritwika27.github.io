@@ -171,6 +171,10 @@
     margin-bottom: 15px;
   }
 
+  #doc-page > div > input {
+    background-color:#6caba7;
+  }
+
   #doc-page > span {
     position:absolute;
     bottom:10px;
@@ -188,7 +192,7 @@
 
   <!-- <input type="button"  id = "skip" value="Skip to end"></input> -->
 
-  
+
 
   <span> Need help or have questions? Call the Learning to Talk Lab at (301) 458-0660 | Learning2Talk@umd.edu</span>
 </div>
@@ -745,7 +749,7 @@
 
 <div id="audioquestion" class="page">
   <div id="audiomain">
-    <div style="text-align:center"><div style="margin:auto; width:108px; height:20px; border-style:solid; padding:4px"><div id="bluebar" style="background-color:blue;height:100%;"></div></div>
+    <div style="text-align:center"><i>progress (<span id="prognum"></span>%)</i><br /><div style="margin:auto; width:108px; height:20px; border-style:solid; padding:4px"><div id="bluebar" style="background-color:blue;height:100%;"></div></div>
     <div id="audiobody" style="text-align:center"><h3>Please play the audio clip and answer the follow questions</h3></div>
     <div style="text-align:center; width:100%;">
       <input type="button" id="audiobutton" bgcolor="white" value="Play Audio"></input>
@@ -763,7 +767,7 @@
     </div>
 
     <div id="audiolikertQ2">
-      <div id="audiobody">How often do you speak ina manner similar to the sentence you just heard?</div>
+      <div id="audiobody">How often do you speak in a manner similar to the sentence you just heard?</div>
       <ul id="audiolikert2" class="likert">
         <li><input type="radio" name="likert2" value="1" /><br /> I never say this </li>
         <li><input type="radio" name="likert2" value="2" /><br /> Only with families and friends</li>
@@ -963,7 +967,8 @@
 
 <div id="dialect" class="page">
   <div id="dialectmain">
-    <div class="dialectbody">Do you use <span class="dialectname">2</span>?</div>
+    <div class="dialectbody">Thank you for listening to samples of dialect <span class="dialectname"></span>. Please answer the following questions to the best of your abilities:</div>
+    <div class="dialectbody">Do you use <span class="dialectname"></span>?</div>
     <div class="dialectchoices">
       <ul class="dialect">
         <li><input type="radio" name="dialect_yn" value="Yes" /><br />Yes</li>
@@ -1015,6 +1020,10 @@
 
 <style>
 
+input[type="radio"] {
+  cursor: pointer;
+}
+
 .demogbody {
   background-color: white;
   border-radius:5px;
@@ -1063,7 +1072,7 @@
       <ul class="demog">
         <li><input type="radio" name="demog_gender" value="Male" /><br />Male (including transgender men)</li>
         <li><input type="radio" name="demog_gender" value="Female" /><br />Female (including transgender women)</li>
-        <li><input type="radio" name="demog_gender" value="Self-Describe" /><br />Prefer to self-describe as <input type="text" id="gender_custom" /></li>
+        <li><input type="radio" name="demog_gender" value="Self-Describe" /><br />Prefer to self-describe as <input type="text" id="gender_custom" /><br /> (non-binary, gender-fluid, agender, please specify)</li>
         <li><input type="radio" name="demog_gender" value="Prefer not to say" /><br />Prefer not to say</li>
       </ul>
     </div>
@@ -1087,7 +1096,7 @@
       </ul>
     </div>
 
-    <div class="demogbody">Race</div>
+    <div class="demogbody">Race (check all that apply)</div>
     <div class="demogchoices">
       <ul class="demog">
         <li><input type="checkbox" name="demog_race" value="American Indian/Alaska native" /><br />American Indian/Alaska native</li>
@@ -1115,7 +1124,7 @@
       </ul>
     </div>
 
-    <div class="demogbody">Please list your parents’ country/countries of origin</div>
+    <div class="demogbody">Please list your parents' country/countries of origin</div>
     <div class="demogchoices">
       <input type="text" id="demog_countries"></input>
     </div>
@@ -1356,6 +1365,131 @@
 <div id="sendgame" class="page">
     <h1 id = "sendingdatagame">Sending Data</h1>
 </div>
+
+<style>
+#end_survey {
+  
+    border: 1px solid black;
+    position:absolute;
+    text-align: center;
+    width: 75%;
+    height: 50%;
+    left:15%;
+    top:10%;
+    font-size: 150%;
+    margin: auto;
+    background-color: white;
+  }
+</style>
+
+<div id="end_survey" class="page">
+    <h1>Thank you for your participation!</h1>
+    <br>
+    <h1>Our research team will contact you via email about compensation.</h1>
+</div>
+<style>
+
+.langbody {
+  background-color: white;
+  border-radius:5px;
+  padding-left:10px;
+  padding-right:10px;
+  padding-top:4px;
+  padding-bottom:4px;
+  margin:10px;
+}
+
+.langchoices {
+  text-align:center;
+}
+
+.lang > li {
+  display:inline-block;
+  text-align:center;
+  padding: 10px;
+
+  border-radius:4px;
+  margin:5px;
+  border:1px solid gray;
+}
+
+#langcontinue {
+  background-color: #6caba7;
+  text-align:center;
+}
+
+#langmain {
+  width:60%;
+  left:20%;
+  position:absolute;
+}
+
+#langnext {
+  text-align:right;
+}
+
+</style>
+
+<div id="lang" class="page">
+  <div id="langmain">
+
+    <div class="langbody"><strong>What language(s) are you proficient in? For each language, please rate your proficiency.</strong></div>
+    <br />
+    <div>
+      Language: <input type="text" id="lang1"></input>
+    </div>
+
+
+    <div class="langbody">Please rate your proficiency:</div>
+    <div class="langchoices">
+      <ul class="lang">
+        <li><input type="radio" name="lang1_proficiency" value="Fluent" /><br />Fluent</li>
+        <li><input type="radio" name="lang1_proficiency" value="Speak a few words" /><br />Can speak a few words</li>
+        <li><input type="radio" name="lang1_proficiency" value="Understand a few words" /><br />Can understand a few words</li>
+        <li><input type="radio" name="lang1_proficiency" value="comprehend, not speak" /><br />I don't fluently speak, but can comprehend</li>
+      </ul>
+    </div>
+
+    <br />
+    <br />
+
+    <div>
+      Language: <input type="text" id="lang2"></input>
+    </div>
+
+    <div class="langbody">Please rate your proficiency:</div>
+    <div class="langchoices">
+      <ul class="lang">
+        <li><input type="radio" name="lang2_proficiency" value="Fluent" /><br />Fluent</li>
+        <li><input type="radio" name="lang2_proficiency" value="Speak a few words" /><br />Can speak a few words</li>
+        <li><input type="radio" name="lang2_proficiency" value="Understand a few words" /><br />Can understand a few words</li>
+        <li><input type="radio" name="lang2_proficiency" value="comprehend, not speak" /><br />I don't fluently speak, but can comprehend</li>
+      </ul>
+    </div>
+
+    <br />
+    <br />
+
+    <div>
+      Language: <input type="text" id="lang3"></input>
+    </div>
+
+    <div class="langbody">Please rate your proficiency:</div>
+    <div class="langchoices">
+      <ul class="lang">
+        <li><input type="radio" name="lang3_proficiency" value="Fluent" /><br />Fluent</li>
+        <li><input type="radio" name="lang3_proficiency" value="Speak a few words" /><br />Can speak a few words</li>
+        <li><input type="radio" name="lang3_proficiency" value="Understand a few words" /><br />Can understand a few words</li>
+        <li><input type="radio" name="lang3_proficiency" value="comprehend, not speak" /><br />I don't fluently speak, but can comprehend</li>
+      </ul>
+    </div>
+
+    <div id="langnext">
+      <input type="button" class="exit" id="langcontinue" value="Continue"></input>
+    </div>
+  </div>
+</div>
+
     <script src="pouchdb-7.2.1.min.js"></script>
     <script src="pages1.js"></script>
 
@@ -2422,13 +2556,15 @@ class AudioQuestionPage extends AudioPage {
 
   play() {
     this.splay = super.play;
+    $("#prognum").html(Math.round(100*progress_aq/total_aq));
     progress_aq += 1;
-    $("#bluebar").css("width", `${Math.round(100*(progress_aq+1)/(total_aq+1))}%`);
+    $("#bluebar").css("width", `${Math.round(100*progress_aq/total_aq)}%`);
 
     $("#audiobutton").bind('click touch', this.play_me.bind(this));
 
     $("#audiocontinue").bind('click touch', function() {
-      survey_log(audio_likert_clicked);
+      survey_log_named(globalBook.pages[globalBook.current_page].pageID + " Q1", audio_likert_clicked[0]);
+      survey_log_named(globalBook.pages[globalBook.current_page].pageID + " Q2", audio_likert_clicked[1]);
       globalBook.nextpage();
     });
 
@@ -2744,6 +2880,7 @@ class SendDataSurveyPage extends Page {
     }
   
     deactivate() {
+      $("#sendsurvey").hide();
       super.deactivate();
     }
   }
@@ -2765,6 +2902,100 @@ class SendDataExpPage extends Page {
     }
   }
 
+
+
+// https://www.tutorialspoint.com/pouchdb/pouchdb_synchronizationpn.htm#:~:text=You%20can%20synchronize%20the%20databases,have%20used%20the%20method%20PouchDB.
+var db = new PouchDB('ab_study');
+
+/*create CouchDB database (personal cloudant db for testng purposes) */
+var remoteCouch = "https://08c3bb2d-aec5-48c2-9972-362ab894e00b-bluemix:c087461717c7e0e15d1592c1505f749fad973517380eb1c36ebe1588922002f9@08c3bb2d-aec5-48c2-9972-362ab894e00b-bluemix.cloudantnosqldb.appdomain.cloud/ab-study";
+
+
+
+
+//implement sync function
+function sync(){
+  //syncDom.setAttribute('data-sync-state', 'syncing');
+  var opts = {live: true, retry: true};
+  //two way sync
+  db.sync(remoteCouch, opts);
+}
+
+//add new data to PouchDB, adds all the logged data for a single game as a new document
+function addData(test_data){
+  var test = {
+      _id: new Date().toISOString(),
+      data: test_data,
+    };
+    db.put(test).then(function(result){
+      console.log(result);
+    }).catch(function(err){
+      console.log(err);
+    });
+}
+
+if (remoteCouch) {
+  sync();
+}
+class EndSurveyPage extends Page {
+    constructor() {
+      super("end_survey");
+    }
+  
+    play() {
+      $("#end_survey").show();
+    }
+  
+    deactivate() {
+      $("#end_survey").hide();
+      //super.deactivate();
+    }
+  }
+
+let lang_radios = ["lang1_proficiency", "lang2_proficiency", "lang3_proficiency"];
+let lang_text = ["lang1","lang2","lang3"];
+
+class LangSurveyPage extends Page {
+  constructor(page) {
+    super(page);
+  }
+
+  log() {
+    for(var i in lang_radios) {
+      survey_log_named(demog_radios[i], get_radio(demog_radios[i]));
+    }
+
+    for(var i in lang_text) {
+      var v = $(`#${demog_text[i]}`).val();
+      if ($(`#${demog_text[i]}`).attr("type") == "number") {
+        survey_log_named(demog_text[i], parseInt(v));
+      } else {
+        survey_log_named(demog_text[i], v);
+      }
+    }
+  }
+
+  clear() {
+    for(var i in lang_radios) {
+      clear_radio(dialect_radios[i]);
+    }
+
+    for(var i in lang_text) {
+        $(`#${lang_text[i]}`).val("");
+    }
+
+  }
+
+  play() {
+    $("#lang").show();
+  }
+
+  deactivate() {
+    this.log();
+    this.clear();
+    $("#lang").hide();
+  }
+}
 </script>
 
 

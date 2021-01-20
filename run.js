@@ -18,8 +18,8 @@ console.log(shuflist);
 
 all_pages = []
 
-var imgSourceDirectory = "";
-var audioSourceDirectory = "";
+//var imgSourceDirectory = "";
+//var audioSourceDirectory = "";
 
 //all_pages.push(new DialectSurveyPage("pagename", "Dialect 1"));
 //all_pages.push(new AudioQuestionPage("aq2", "WAVFiles/Reinforcement/Slide6_9_CorrectFeedback.mp3"));
@@ -32,15 +32,15 @@ all_pages.push(new WelcomeExperimentPage());
 
 function addGamePages(){
 
-       var imgSourceDirectory = "";
-       var audioSourceDirectory = "";
+       imgSourceDirectory = "";
+       audioSourceDirectory = "";
        all_pages.push(new DocPage("instruction page", "<br/> <br/> Participant ID<br />\
                            <hr><div style='color:red;text-align:center;width:100%'>"+userID+"</div><br/> <br/> ",
                            "90%", "60px", "Ready!",
                            undefined));
 
 
-       all_pages.push(new EmailPage());
+       //all_pages.push(new EmailPage());
        all_pages.push(new ChooseList());
 
 
@@ -53,8 +53,10 @@ function addGamePages(){
        all_pages.push(new Slide7Page());
 
 
-       var imgSourceDirectory = "FinalImagesALL/ImgaesforExamples/";
-       var audioSourceDirectory = "WAVFiles/Introduction_Instructions/";
+
+       imgSourceDirectory = "FinalImagesALL/ImgaesforExamples/";
+       audioSourceDirectory = "WAVFiles/Introduction_Instructions/";
+
        all_pages.push(new LearnQuadPage("P_J was playing the piano",
                      [new Choice("T",
                             "Boy1_Piano.png"),
@@ -119,7 +121,7 @@ function addGamePages(){
               "Slide6_IncorrectFeedback.mp3",
               true));
 
-       var audioSourceDirectory = "WAVFiles/Introduction_Instructions/";
+       audioSourceDirectory = "WAVFiles/Introduction_Instructions/";
 
 
 
@@ -139,7 +141,7 @@ function addGamePages(){
               "Slide7_IncorrectFeedback.mp3",
               false));
 
-       var audioSourceDirectory = "WAVFiles/Examples/";
+       audioSourceDirectory = "WAVFiles/Examples/";
 
        all_pages.push(new LearnQuadPage("P_CM is cleaning the table herself",
               [new Choice("C1",
@@ -159,7 +161,7 @@ function addGamePages(){
 
 
 
-       var audioSourceDirectory = "WAVFiles/Examples/";
+       audioSourceDirectory = "WAVFiles/Examples/";
 
        all_pages.push(new LearnQuadPage("P_CM is watching the movie herself",
               [new Choice("C1",
@@ -257,32 +259,44 @@ function addPages(index){
 
 //gets called when cont to survey is clicked, from beggining or after game end
 function addSurveyPages() {
-      globalBook.pages.push(new WelcomeSurveyPage());
+       globalBook.pages.push(new WelcomeSurveyPage());
 
-      globalBook.pages.push(new DocPage("survey instructions", "<br/> Instructions <br />\
-                            <p style='font-size:25px'>People from different places and backgrounds talk in different ways. In this section you will hear examples of people saying different phrases in three different dialects. We want you to play the example sentence and answer the corresponding questions. Feel free to play the example sentence more tan once. Please don't focus on what the person is saying, but how they are saying it.</p><br/>",
-                            "90%", "60px", "Ready!",
-                            undefined));
+       globalBook.pages.push(new DocPage("survey instructions", "<br/> Instructions <br />\
+                                   <p style='font-size:25px'>People from different places and backgrounds talk in different ways. In this section you will hear examples of people saying different phrases in three different dialects. We want you to play the example sentence and answer the corresponding questions. Feel free to play the example sentence more than once. Please don't focus on what the person is saying, but how they are saying it.</p><br/>",
+                                   "90%", "60px", "Next",
+                                   undefined));
 
-      for (var i in MLE) {
-       globalBook.pages.push(new AudioQuestionPage("MLE: "+MLE[i], MLE_Prefix+MLE[i]))
-      }
-      globalBook.pages.push(new DialectSurveyPage("Dialect 1", "Dialect 1"));
+       globalBook.pages.push(new DocPage("dialect 1 intro", "<br/> Now you will listen to samples of Dialect 1 <br /><br />",
+                                   "90%", "40px", "Ready!",
+                                   undefined));
 
-      for (var i in MAE) {
-       globalBook.pages.push(new AudioQuestionPage("MAE: "+MAE[i], MAE_Prefix+MAE[i]))
-      }
-      globalBook.pages.push(new DialectSurveyPage("Dialect 2", "Dialect 2"));
+       for (var i in MLE) {
+              globalBook.pages.push(new AudioQuestionPage("MLE: "+MLE[i], MLE_Prefix+MLE[i]));
+       }
+       globalBook.pages.push(new DialectSurveyPage("Dialect 1", "Dialect 1"));
 
-      for (var i in AAL) {
-        globalBook.pages.push(new AudioQuestionPage("AAL: "+AAL[i], AAL_Prefix+AAL[i]))
-      }
-      globalBook.pages.push(new DialectSurveyPage("Dialect 3", "Dialect 3"));
+       globalBook.pages.push(new DocPage("dialect 2 intro", "<br/> Now you will listen to samples of Dialect 2 <br /><br />",
+                                   "90%", "40px", "Ready!",
+                                   undefined));
+       for (var i in AAL) {
+              globalBook.pages.push(new AudioQuestionPage("AAL: "+AAL[i], AAL_Prefix+AAL[i]))
+       }
+       globalBook.pages.push(new DialectSurveyPage("Dialect 2", "Dialect 2"));
 
-      globalBook.pages.push(new DemogSurveyPage("demogrpahics"));
+       globalBook.pages.push(new DocPage("dialect 3 intro", "<br/> Now you will listen to samples of Dialect 3 <br /><br />",
+                                   "90%", "40px", "Ready!",
+                                   undefined));
+       for (var i in MAE) {
+              globalBook.pages.push(new AudioQuestionPage("MAE: "+MAE[i], MAE_Prefix+MAE[i]))
+       }
+       globalBook.pages.push(new DialectSurveyPage("Dialect 3", "Dialect 3"));
 
-//       globalBook.pages.push(new SendDataSurveyPage());
-       //globalBook.pages.push(new EndSurveyPage());
+
+
+       globalBook.pages.push(new DemogSurveyPage("demogrpahics"));
+       globalBook.pages.push(new LangSurveyPage(""));
+       globalBook.pages.push(new SendDataSurveyPage());
+       globalBook.pages.push(new EndSurveyPage());
 }
 
 var book = new Book(all_pages, 0);

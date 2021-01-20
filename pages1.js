@@ -30,227 +30,235 @@
 //  11. direct object: string
 //  12. correct: string
 function new_datum(clickQuadrant, startTime, endTime) {
-    var correct;
-    var targetQuadrant = globalBook.pages[globalBook.current_page].targetQuadrant;
-    var sentence = globalBook.pages[globalBook.current_page].pageID.split(" ");
+  var correct;
+  var targetQuadrant = globalBook.pages[globalBook.current_page].targetQuadrant;
+  var sentence = globalBook.pages[globalBook.current_page].pageID.split(" ");
 
-    var arr = getNameConditionObject(sentence);
+  var arr = getNameConditionObject(sentence);
 
-    var name = arr[0];
-    var direct_object = arr[1];
-    var condition = arr[2];
-    if (targetQuadrant == clickQuadrant){
-        correct = "yes";
-    }else {
-        correct = "no"
-    }
-    var dat = [(new Date()).getTime(),
-               userID,
-               listIndex + 1,
-               globalBook.pages[globalBook.current_page].pageID,
-               targetQuadrant,
-               clickQuadrant,
-               endTime - startTime,
-               startTime,
-               endTime,
-               condition,
-               name,
-               direct_object,
-               correct];
+  var name = arr[0];
+  var direct_object = arr[1];
+  var condition = arr[2];
+  if (targetQuadrant == clickQuadrant){
+      correct = "yes";
+  }else {
+      correct = "no"
+  }
+  var dat = [(new Date()).getTime(),
+             userID,
+             listIndex + 1,
+             globalBook.pages[globalBook.current_page].pageID,
+             targetQuadrant,
+             clickQuadrant,
+             endTime - startTime,
+             startTime,
+             endTime,
+             condition,
+             name,
+             direct_object,
+             correct];
 
-    logged_data.push(dat);
+  logged_data.push(dat);
 
-    return dat;
+  return dat;
+}
+
+function getNameConditionObject(sentence){
+var name;
+var verb;
+var condition;
+var direct_object;
+if (sentence[0].match(/P/)){
+  console.log("hello");
+  name = sentence[0].replace("P_", "");
+  condition = "practice";
+  var obj = sentence[sentence.length -1]
+  if(obj == "herself" || obj == "himself" || obj == "together"){
+    direct_object = sentence[sentence.length -2];
+  }else {
+    direct_object = sentence[sentence.length -1];
   }
 
-  function getNameConditionObject(sentence){
-  var name;
-  var verb;
-  var condition;
-  var direct_object;
-  if (sentence[0].match(/P/)){
-    console.log("hello");
-    name = sentence[0].replace("P_", "");
-    condition = "practice";
-    var obj = sentence[sentence.length -1]
-    if(obj == "herself" || obj == "himself" || obj == "together"){
-      direct_object = sentence[sentence.length -2];
-    }else {
-      direct_object = sentence[sentence.length -1];
-    }
-
+}else{
+  name = sentence[0];
+  verb = sentence[1];
+  direct_object = sentence[sentence.length -1]
+  if (name == "CM" && verb == "was"){
+      condition = "A_was";
+  }else if (name == "CM" && verb == "were"){
+      condition = "A_were";
+  }else if (name == "CJ"){
+      condition = "UA_were";
   }else{
-    name = sentence[0];
-    verb = sentence[1];
-    direct_object = sentence[sentence.length -1]
-    if (name == "CM" && verb == "was"){
-        condition = "A_was";
-    }else if (name == "CM" && verb == "were"){
-        condition = "A_were";
-    }else if (name == "CJ"){
-        condition = "UA_were";
-    }else{
-        condition = "UA_was";
+      condition = "UA_was";
+  }
+}
+var arr = [name, direct_object, condition];
+return arr;
+
+}
+
+function export_data() {
+  addData(logged_data);
+  document.getElementById('sendingdatagame').innerHTML = "Data Sent Succesfully!";
+  console.log(status);
+  console.log("game data sent");
+  globalBook.nextpage(); 
+}
+
+//export function for experiment  for actual site 
+// function export_data() {
+//   $.ajax({
+//     url: 'http://learning2talk.virtualstudies.umd.edu/submit',
+//     headers: {
+//       'Bearer': authKey
+//     },
+//     contentType: 'application/json',
+//     method: 'POST',
+//     data: JSON.stringify({ "data": logged_data }),
+//     success: function (data, status, xhr) {
+//      Document.getElementById('sendingdatagame').innerHTML = "Data Sent Succesfully!";
+//      console.log(status);
+//      console.log("game data sent");
+//      globalBook.nextpage();
+//     }
+//   });
+// }
+
+function survey_log(v) {
+  var time = (new Date()).getTime();
+  if (typeof v == 'number') {
+    survey_data.push([time, userID, globalBook.pages[globalBook.current_page].pageID, v, 0]);
+  } else if (typeof v == 'string') {
+    survey_data.push([time, userID, globalBook.pages[globalBook.current_page].pageID, 0, v]);
+  } else {
+    console.log("logging non-number non-string data!!");
+  }
+}
+
+function survey_log_named(name, v) {
+  var time = (new Date()).getTime();
+  if (typeof v == 'number') {
+    survey_data.push([time, userID, name, v, 0]);
+  } else if (typeof v == 'string') {
+    survey_data.push([time, userID, name, 0, v]);
+  } else {
+    console.log("logging non-number non-string data!!");
+  }
+}
+
+function survey_log_paired(name, strin, integ) {
+  survey_data.push([(new Date()).getTime(), userID, name, integ, strin]);
+}
+
+function export_survey() {
+  addData(survey_data); 
+  document.getElementById('sendsurvey').innerHTML = "Data Sent Succesfully!"; 
+  console.log(status);
+  console.log("survey sent");
+  globalBook.nextpage();
+}
+
+//export function for survey actual site 
+// function export_survey() {
+//   $.ajax({
+//     url: 'http://learning2talk.virtualstudies.umd.edu/surveysubmit',
+//     headers: {
+//       'Bearer': authKey
+//     },
+//     contentType: 'application/json',
+//     method: 'POST',
+//     data: JSON.stringify({ "data": survey_data }),
+//     success: function (data, status, xhr) {
+//       document.getElementById('sendsurvey').innerHTML = "Data Sent Succesfully!"; 
+//       console.log(status);
+//       console.log("survey sent");
+//       globalBook.nextpage();
+//     }
+//   });
+// }
+
+
+// A page can be played or stopped
+class Page {
+  constructor(pageID) {
+    this.pageID = pageID;
+
+    this.timeouts = [];
+    this.intervals = [];
+  }
+
+  setTimeout(fn, dt){
+    this.timeouts.push(setTimeout(fn, dt));
+  }
+
+  setInterval(fn, dt, startImmediately){
+    if( startImmediately ) {
+      fn();
+    }
+    this.intervals.push(setInterval(fn, dt));
+  }
+
+  play() {}
+
+  deactivate() {
+    for (var i=0; i<this.timeouts.length; i++) {
+      clearTimeout(this.timeouts[i]);
+    }
+
+    for (var i=0; i<this.intervals.length; i++) {
+      clearInterval(this.intervals[i]);
     }
   }
-  var arr = [name, direct_object, condition];
-  return arr;
+}
 
+// set of pages
+class Book {
+  constructor(pages, buffer_time) {
+    if (buffer_time == undefined) {
+      buffer_time = 0;
+    }
+
+    this.buffer_time = buffer_time;
+    this.pages = pages;
+    this.current_page = -1;
   }
 
-  function export_data() {
-    //addData(logged_data);
-    $.ajax({
-      url: 'https://493eebb3-f2ce-4ba4-9d67-ac4b1ec5e8b5.mock.pstmn.io',
-      // headers: {
-      //     'Content_Type': "application/json",
-      //     'Bearer': authKey,
-      // },
-      // headers: {
-      //   'Bearer': authKey
-      // },
-      contentType: 'application/json',
-      method: 'POST',
-      data: JSON.stringify({ "data": logged_data }),
-      success: function (data, status, xhr) {
-        ocument.getElementById('sendingdatagame').innerHTML = "Data Sent Succesfully!";
-        console.log(status);
-        console.log("game data sent");
+  nextpage() {
+    if (this.current_page > -1) {
+      this.pages[this.current_page].deactivate();
+    }
+
+    setTimeout(function() {
+      this.current_page++;
+      if (this.current_page < this.pages.length){
+        this.pages[this.current_page].play();
       }
-    });
-
-  }
-
-
-  function survey_log(v) {
-    var time = (new Date()).getTime();
-    if (typeof v == 'number') {
-      survey_data.push([time, userID, globalBook.pages[globalBook.current_page].pageID, v, 0]);
-    } else if (typeof v == 'string') {
-      survey_data.push([time, userID, globalBook.pages[globalBook.current_page].pageID, 0, v]);
-    } else {
-      console.log("logging non-number non-string data!!");
-    }
-  }
-
-  function survey_log_named(name, v) {
-    var time = (new Date()).getTime();
-    if (typeof v == 'number') {
-      survey_data.push([time, userID, name, v, 0]);
-    } else if (typeof v == 'string') {
-      survey_data.push([time, userID, name, 0, v]);
-    } else {
-      console.log("logging non-number non-string data!!");
-    }
-  }
-
-  function survey_log_paired(name, strin, integ) {
-    survey_data.push([(new Date()).getTime(), userID, name, integ, strin]);
-  }
-  
-  function export_survey() {
-    //addData(logged_data);
-    $.ajax({
-      url: 'https://493eebb3-f2ce-4ba4-9d67-ac4b1ec5e8b5.mock.pstmn.io',
-      // headers: {
-      //     'Content_Type': "application/json",
-      //     'Bearer': authKey,
-      // },
-      // headers: {
-      //   'Bearer': authKey
-      // },
-      contentType: 'application/json',
-      method: 'POST',
-      data: JSON.stringify({ "data": survey_data }),
-      success: function (data, status, xhr) {
-        document.getElementById('sendingdata').innerHTML = "Data Sent Succesfully!"; 
-        console.log(status);
-        console.log("survey sent");
-      }
-    });
-  
-  }
-  
-  // A page can be played or stopped
-  class Page {
-    constructor(pageID) {
-      this.pageID = pageID;
-
-      this.timeouts = [];
-      this.intervals = [];
-    }
-
-    setTimeout(fn, dt){
-      this.timeouts.push(setTimeout(fn, dt));
-    }
-
-    setInterval(fn, dt, startImmediately){
-      if( startImmediately ) {
-        fn();
-      }
-      this.intervals.push(setInterval(fn, dt));
-    }
-
-    play() {}
-
-    deactivate() {
-      for (var i=0; i<this.timeouts.length; i++) {
-        clearTimeout(this.timeouts[i]);
-      }
-
-      for (var i=0; i<this.intervals.length; i++) {
-        clearInterval(this.intervals[i]);
-      }
-    }
-  }
-
-  // set of pages
-  class Book {
-    constructor(pages, buffer_time) {
-      if (buffer_time == undefined) {
-        buffer_time = 0;
-      }
-
-      this.buffer_time = buffer_time;
-      this.pages = pages;
-      this.current_page = -1;
-    }
-
-    nextpage() {
-      if (this.current_page > -1) {
-        this.pages[this.current_page].deactivate();
-      }
-
-      setTimeout(function() {
-        this.current_page++;
-        if (this.current_page < this.pages.length){
-          this.pages[this.current_page].play();
-        }
-        // if (this.current_page < this.pages.length) {
-        //   
-        //   if (this.current_page ==  this.pages.length-2) {
-        //     export_data();
-        //   }
-        // } else {
+      // if (this.current_page < this.pages.length) {
+      //   
+      //   if (this.current_page ==  this.pages.length-2) {
+      //     export_data();
+      //   }
+      // } else {
 //  $("img").hide()
 //           $("#end").show()         
-        //}
-      }.bind(this), this.buffer_time * 1000);
-    }
+      //}
+    }.bind(this), this.buffer_time * 1000);
   }
+}
 
-  var globalBook;
+var globalBook;
 
-  // The universal next-page bind
-  $(".exit").bind("click touch", function() {
-    globalBook.nextpage();
-  });
+// The universal next-page bind
+$(".exit").bind("click touch", function() {
+  globalBook.nextpage();
+});
 
-  function run_book(book) {
-    globalBook = book;
+function run_book(book) {
+  globalBook = book;
 
-    globalBook.nextpage()
-  }
+  globalBook.nextpage()
+}
 
-  var logged_data = [];
-  var survey_data = [];
+var logged_data = [];
+var survey_data = [];
